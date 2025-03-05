@@ -1,0 +1,54 @@
+
+<div class="section card ">
+  <div class=" section2 mt-4">
+    <img  style=" overflow-x: auto; display: block; height: 100%;" alt="">
+      <h1 style="color:white; margin-top: -55px; font-family: 'Times New Roman', Times, serif;" class="text-center">
+          Sistema de Somos CDC</h1>
+  </div>
+</div>
+
+
+<div class="text-center ">
+  <!-- <h2 style="font-family: 'Times New Roman', Times, serif;"> <strong>Bienvenido: </strong> {{nombre}}</h2> -->
+</div>
+
+<div class="text-center">
+  <h2>Seleccione 3 preguntas..</h2>
+  <p>Recuerde que las respuesta que guarde podra restablecer su contraseña, sea minucioso!</p>
+</div>
+<div  class="text-center mx-auto" style="width: 50%;" >
+  <form     [formGroup]="form" >
+    <div  class="text-center row">
+      <div class="col-md-6 text-center" style="width: 50px;">
+        <label for="">Usuario/Correo</label>
+        <input type="text" class="form-control" (keyup)="getPreguntas($event)">
+      </div>
+      <div class="col-md-6 text-center" style="width: 50px;">
+          <label>Preguntas</label>
+          <select   class="form-control" required formControlName="idPregunta" >
+            <option disabled="true">Seleccione un opción</option>
+            <option  *ngFor="let item of preguntas; " [value]="item.idPregunta">{{item.pregunta}}  </option>
+          </select>
+
+      </div>
+      <div class="col-md-6 text-center" style="width: 50px;">
+          <label>Respuesta</label>
+        <input class="form-control" formControlName="respuesta"  type="text" (input)="convertirAMayusculas($event)">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button [disabled]="form.invalid" (click)="verificar()" class="btn btn-success" >Verificar..</button>
+    </div>
+
+
+  </form>
+
+
+
+
+
+</div>
+
+
+

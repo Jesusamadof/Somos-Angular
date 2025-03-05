@@ -1,0 +1,190 @@
+<div class=""  >
+
+  <!-- Main Sidebar Container -->
+  <aside class="zIndex main-sidebar sidebar-dark-white  " >
+    <!-- Brand Logo -->
+    <a class="brand-link">
+      <img src="./assets/dist/img/logo.png" alt="" class="brand-image img-circle elevation-3 ml-4" style="opacity: .8">
+      <span class="brand-text font-weight-light"> Somos CDC</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <!-- <img src="./assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
+        </div>
+        <div class="info">
+          <strong style="color: azure; margin-left: 40px;">Bienvenido: </strong>
+          <a  class="d-block">{{decoded.nombre}}</a>
+        </div>
+      </div>
+
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mb-4" *ngFor="let item of datsPermisosPadre">
+        <ul
+          *ngIf="item.estadoObjeto==1 && item.estadoRol==1 && item.estadoPermiso==1 && item.estadoEliminacionPermiso==0 && item.estadoEliminacionRol==0 && item.estadoEliminacionObjeto==0 "
+
+          class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+          <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+          <li class="nav-item "  [ngClass]="{'menu-open': isAbierto && activateRouterPadre==item.nombreObjetoPadre, 'menu-close': !isAbierto}" >
+            <a style="color:white" class="nav-link {{activateRouterPadre==item.nombreObjetoPadre && activateRouterHijo!='true' ?'active':'inactive'}} " (click)="toggleElement()"
+              [style]="activateRouterPadre==item.nombreObjetoPadre?'background-color: #933996':''"
+              (click)="modulopadre(item.nombreObjetoPadre)">
+              <div *ngIf="item.idRol==decoded.idRol" class="icon-text-container">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="{{item.iconoPadre}}"></mat-icon>
+                <p class="modPadre">
+                  {{item.nombreObjetoPadre}}
+                </p>
+              </div>
+              <i class="right fas fa-angle-left mt-1"></i>
+            </a>
+            <ul class="nav nav-treeview" *ngFor="let item2 of datsPermisosHijo">
+              <li
+                *ngIf="item2.estadoObjeto==1 && item2.estadoRol==1 && item2.estadoPermiso==1 && item.estadoEliminacionPermiso==0 && item.estadoEliminacionRol==0 && item.estadoEliminacionObjeto==0"
+                class="nav-item">
+                <a *ngIf="item.idObjetoPadre==item2.idObjetoPadre" routerLink='{{item2.ruta}}'
+                  class="nav-link {{activateRouterHijo === item2.ruta? 'active':'inactivate'}} "
+                  (click)="modulohijo(item2.ruta)" [class.router-link-active]="activateRouterHijo === item2.ruta">
+                  <div class="icon-text-container">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                      fontIcon="{{item2.iconoHijo}}"></mat-icon>
+                    <p>{{item2.nombreObjeto}}</p>
+                  </div>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                  <a routerLink='seguridad/roles' routerLinkActive="router-link-active" class="nav-link  {{activateRouterHijo === 'seguridad/roles' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/roles')">
+                    <div class="icon-text-container">
+                      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="switch_account"></mat-icon>
+                      <p>Roles</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink='seguridad/Objetos' routerLinkActive="false" class="nav-link  {{activateRouterHijo === 'seguridad/Objetos' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/Objetos')">
+
+                    <div class="icon-text-container">
+                      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="view_module"></mat-icon>
+                      <p>Módulos</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink='seguridad/permisos' routerLinkActive="router-link-active" class="nav-link {{activateRouterHijo === 'seguridad/permisos' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/permisos')">
+                    <div class="icon-text-container">
+                      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="badge"></mat-icon>
+                      <p>Permisos</p>
+                    </div>
+                  </a>
+                </li>
+
+                  <li class="nav-item">
+                    <a routerLink='seguridad/asignarObjetosRol' routerLinkActive="router-link-active"
+                      class="nav-link {{activateRouterHijo === 'seguridad/asignarObjetosRol' ? 'active':'inactivate'}} "
+                      (click)="Objetohijo('seguridad/asignarObjetosRol')">
+                      <div class="icon-text-container">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="badge"></mat-icon>
+                        <p>Objetos Asignado a Roles</p>
+                      </div>
+                    </a>
+                  </li> -->
+              <!-- <li class="nav-item">
+                  <a [routerLink]="['inicio']" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard v2</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard v3</p>
+                  </a>
+                </li> -->
+            </ul>
+          </li>
+
+          <!-- <li class="nav-item  {{activateRouterPadre=='seguridad2'?' menu-open':''}} "   >
+              <a  class="nav-link  {{activateRouterPadre=='seguridad2'?'active':'inactive'}}"  [style]="activateRouterPadre=='seguridad2'?'background-color: #025418':''" (click)="Objetopadre('seguridad2')"  >
+                <div class="icon-text-container">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
+                  <p class="modPadre">
+                    Proveedores
+
+                  </p>
+                </div>
+                <i class="right fas fa-angle-left mt-1" ></i>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a routerLink='seguridad/usuarios'  class="nav-link {{activateRouterHijo === 'seguridad/usuarios2' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/usuarios2')"   [class.router-link-active]="activateRouterHijo === 'seguridad/usuarios'" >
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Usuarios {{activateRouterHijo === 'seguridad/usuarios' ? 'activate':'inactivate'}}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink='seguridad/roles' routerLinkActive="router-link-active" class="nav-link  {{activateRouterHijo === 'seguridad/roles2' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/roles2')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Roles</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink='seguridad/Objetos' routerLinkActive="false" class="nav-link  {{activateRouterHijo === 'seguridad/Objetos2' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/Objetos2')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Módulos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink='seguridad/permisos' routerLinkActive="router-link-active" class="nav-link {{activateRouterHijo === 'seguridad/permisos2' ? 'active':'inactivate'}} "  (click)="Objetohijo('seguridad/permisos2')">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Permisos</p>
+                  </a>
+                </li>
+                 <li class="nav-item">
+                  <a [routerLink]="['inicio']" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard v2</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard v3</p>
+                  </a>
+                </li>
+              </ul>
+            </li> -->
+
+
+
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+
+<div class="section card ">
+  <div class=" section2 mt-4">
+      <h1 style="color:white; margin-top: -55px; font-family: 'Times New Roman', Times, serif;" class="text-center">
+          Sistema de Somos CDC</h1>
+  </div>
+</div>
+
+
+<div class="text-center ">
+  <h2 style="font-family: 'Times New Roman', Times, serif;"> <strong>Nombre: </strong> {{nombre}}</h2>
+</div>
+
+
+<div class="login mb-4" style=" color: #933996;">
+
+  <div class="card card-outline card-success">
+      <div class="card-header text-center">
+          <a  class="h1">Somos CDC</a>
+      </div>
+      <div  style="height: 70%;" class="card-body">
+          <h2 class="text-center">Cambiar Contraseña</h2>
+          <!-- <h3 class="login-box-msg" style="font-family: 'Times New Roman', Times, serif;">Ingrese su Usuario y
+              Contraseña.</h3> -->
+          <form [formGroup]="form" method="post" >
+
+              <div class="row">
+                  <div class="col">
+
+                      <mat-form-field class="col auto">
+                          <mat-label>Usuario</mat-label>
+                          <input value="{{usuario}}" readonly="true" matInput type="text" placeholder="Ingrese nueva contrasena" />
+                      </mat-form-field>
+                  </div>
+
+              </div>
+
+
+
+
+
+              <div class=" row">
+                  <div class=" col">
+
+                  <mat-form-field class="col auto">
+                      <mat-label>Nueva Contraseña</mat-label>
+                      <input [type]="hidePassword1 ? 'password':'text'" matInput formControlName="contrasena" type="text"  placeholder="Ingrese nueva contrasena" />
+                  <div class="mr-4" matSuffix mat-icon-button aria-label="Clear" (click)="$event.stopPropagation()">
+                      <mat-icon  style="color: #464646;" fontIcon="{{hidePassword1?'visibility_off':'visibility'}}" (click)="togglePasswordVisibility1()"></mat-icon>
+
+                  </div>
+                  <mat-error  *ngIf="form.get('contrasena').hasError('pattern')">La contraseña debe contener al menos una letra
+                      mayúscula, una letra minúscula y un carácter especial.</mat-error>
+                      <mat-error *ngIf="form.get('contrasena').hasError('required')">Campo Requerido</mat-error>
+                      <mat-error *ngIf="form.get('contrasena').hasError('minlength')">Minimo 8 Carácteres</mat-error>
+
+                  </mat-form-field>
+
+                  <!-- <input matInput  type="password"
+                      [type]="hidePassword1 ? 'password':'text'" class="form-control"
+                      placeholder="Ingrese su contraseña"
+                      formControlName="contrasena"
+                      required
+                      name="contrasena"
+                      >
+
+                  <div class="input-group-append">
+                      <div class="input-group-text">
+                          <span (click)="togglePasswordVisibility1()"
+                              class="{{ hidePassword1 ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></span>
+                      </div>
+                  </div> -->
+
+              </div>
+
+
+              <div class="col">
+
+                  <mat-form-field class="col auto">
+                      <mat-label>Confirmar Contraseña</mat-label>
+                      <input  [type]="hidePassword2 ? 'password':'text'" matInput formControlName="confirmarContrasena" type="text"
+                          placeholder="Ingrese nueva contrasena" />
+                      <div class="mr-4" matSuffix mat-icon-button aria-label="Clear" (click)="$event.stopPropagation()">
+                          <mat-icon style="color: #464646;" fontIcon="{{hidePassword2?'visibility_off':'visibility'}}"
+                              (click)="togglePasswordVisibility2()"></mat-icon>
+
+                      </div>
+                      <mat-error *ngIf="form.get('contrasena').hasError('required')">Campo Requerido</mat-error>
+
+                  </mat-form-field>
+                  <mat-error *ngIf="form.value.contrasena!==form.value.confirmarContrasena">Contraseñas no
+                      coinciden</mat-error>
+              </div>
+
+              </div>
+
+              <!-- <div *ngIf="validar==false" class="alert alert-danger">
+                <h2>{{mensaje}}</h2>
+              </div> -->
+
+              <div  class="row">
+                  <div class="col-12">
+                      <button *ngIf="form.valid && form.value.contrasena==form.value.confirmarContrasena"  style="background-color:  #025418;" type="submit" class="btn btn-success btn-block"
+                        (click)="guardar()" >Acceder</button>
+                  </div>
+                  <div style="margin-top: 60px;">
+
+                  </div>
+                  <!-- /.col -->
+              </div>
+          </form>
+
+
+
+
+
+      </div>
+      <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>

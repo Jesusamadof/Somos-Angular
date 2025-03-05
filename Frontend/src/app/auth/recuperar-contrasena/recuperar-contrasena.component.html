@@ -1,0 +1,21 @@
+<h1 mat-dialog-title> Recuperación Contraseña</h1>
+<div mat-dialog-content>
+  <p>Elija el método para recuperar su contraseña</p>
+  <div class="row">
+    <form class="col-md-12" [formGroup]="form">
+      <mat-form-field class="col-md-12" >
+        <mat-label>Seleccione un método</mat-label>
+        <mat-select    required formControlName="valor">
+          <mat-option value="1">Recuperación vía correo</mat-option>
+          <mat-option value="2">Recuperación vía preguntas</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+  </div>
+
+</div>
+<div mat-dialog-actions align="center">
+  <button class="btn btn-danger mr-4" mat-button (click)="onNoClick()" >Cancelar</button>
+  <button [disabled]="form.invalid" class="btn btn-success" mat-button (click)="seleccionar()" cdkFocusInitial>Seleccionar</button>
+</div>

@@ -1,0 +1,89 @@
+<mat-card>
+  <h1 class="h1 text-center">{{operacion}} Caso</h1>
+</mat-card>
+
+    <div class="card" style="overflow-x:auto; margin:8px; height: 630px; ">
+    <div class="section-container" style=" align-items: center; margin: 20px;">
+        <form class="mt-3" [formGroup]="form">
+          <div class="separador"></div>
+          <h2>Datos Generales: </h2>
+          <div class="row">
+          <div class="col-md-4">
+            <label for="">Fecha</label>
+            <input class="form-control" placeholder="Ingrese la fecha"  formControlName="fecha" required type="Date" autocomplete="off">
+            <mat-error style="color: #EC1305;" *ngIf="form.get('fecha')?.hasError('required')">Campos requeridos</mat-error>
+            <!-- <mat-error style="color: #EC1305;" *ngIf="form.get('dni')?.hasError('pattern')">Formato Incorrecto</mat-error> -->
+          </div>
+          <div class="col-md-4">
+            <label for="">Hora</label>
+            <input class="form-control" placeholder="Ingrese la hora" name="nombreLegal" formControlName="hora" required type="time" autocomplete="off" >
+            <mat-error style="color: #EC1305;" *ngIf="form.get('hora')?.hasError('required')">Campos requeridos</mat-error>
+          </div>
+          <div class="col-md-4">
+            <label for="">Lugar</label>
+            <input class="form-control" placeholder="Ingrese el lugar"  formControlName="lugar" required type="text" autocomplete="off">
+            <mat-error style="color: #EC1305;" *ngIf="form.get('lugar')?.hasError('required')">Campos requeridos</mat-error>
+          </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Nombre género</label>
+              <input class="form-control" placeholder="Ingrese nombre de género"  formControlName="nombreGenero" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('nombreGenero')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Alias</label>
+              <input class="form-control" placeholder="Ingrese el alias"  formControlName="alias" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('alias')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">DNI</label>
+              <input class="form-control" placeholder="Ingrese DNI"  formControlName="dni" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('dni')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-4">
+              <label for="">Orientación Sexual</label>
+              <select  class=" form-control form-select-lg mb-3" formControlName="idOrientacion" placeholder="Seleccione"  >
+                <option disabled >Seleccione una orientación </option>
+                <option  *ngFor="let item of orientaciones" value="{{item.idOrientacion}}" >{{item.orientacion}}</option>
+              </select>
+
+              <mat-error style="color: #EC1305;" *ngIf="form.get('idOrientacion')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Otro nombre</label>
+              <input class="form-control" placeholder="Ingrese otro nombre"  formControlName="otroNombre" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('otroNombre')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+          </div>
+
+
+          <div class="row justify-content-center" style="margin-top: 15px;">
+            <div class="col-md-6 text-center">
+              <button  class="btn btn-danger mr-4" (click)="volver()" routerLinkActive="router-link-active"  >Volver</button>
+              <button [disabled]="form.invalid" class="btn btn-success" (click)="addEdit()">Guardar</button>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        </form>
+      </div>
+
+
+

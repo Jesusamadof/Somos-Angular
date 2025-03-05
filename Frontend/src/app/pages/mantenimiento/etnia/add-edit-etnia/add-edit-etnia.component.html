@@ -1,0 +1,24 @@
+<mat-card>
+  <h1 class="h1 text-center">{{operacion}} Etnia</h1>
+</mat-card>
+
+    <div class="card" style="overflow-x:auto; margin:8px; height: 630px; ">
+      <div class="section-container" style=" align-items: center; margin: 20px;">
+        <form class="mt-3" [formGroup]="form">
+          <div class="row">
+          <div class="col-md-12">
+            <label for="">Etnia</label>
+            <input class="form-control" placeholder="Ingrese condición migratoria" formControlName="etnia" required type="text" >
+            <mat-error style="color: #EC1305;" *ngIf="form.get('etnia').hasError('required')">Campos requeridos</mat-error>
+            <mat-error style="color: #EC1305;" *ngIf="form.get('etnia').hasError('pattern')">Formato Incorrecto</mat-error>
+          </div>
+          </div>
+          <div class="row justify-content-center" style="margin-top: 15px;">
+            <div class="col-md-6 text-center">
+              <button  class="btn btn-danger mr-4" (click)="volver()" routerLinkActive="router-link-active"  >Volver</button>
+              <button [disabled]="form.invalid" class="btn btn-success" (click)="agregarEtnia()">Guardar</button>
+            </div>
+          </div>
+         </form>
+      </div>
+

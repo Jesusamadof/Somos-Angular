@@ -1,0 +1,19 @@
+.icon-text-container {
+  display: flex; /* Utiliza un modelo de caja flexible */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 2%; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Estilos adicionales para el ícono si es necesario */
+mat-icon {
+  margin-right: 5px; /* Ajusta el margen derecho para separar el ícono del texto */
+  /* Agrega otros estilos para el ícono aquí */
+}
+.modPadre{
+  font-weight:bold;
+font-size: 120%;
+}
+
+.p {
+z-index: 1040px;
+}

@@ -1,0 +1,313 @@
+<mat-card>
+  <h1 class="h1 text-center">{{operacion}} Victima</h1>
+</mat-card>
+
+    <div class="card" style="overflow-x:auto; margin:8px; height: 630px; ">
+      <div class="section-container" style=" align-items: center; margin: 20px;">
+        <form class="mt-3" [formGroup]="form">
+          <div class="separador"></div>
+          <h2>Datos Generales: </h2>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Persona</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="idPersona" placeholder="Seleccione" >
+                <option disabled >Seleccione una persona</option>
+                <option  *ngFor="let item of personas" value="{{item.idPersona}}" >{{item.nombreLegal}} ({{item.dni}})</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('idPersona')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Nombre Legal</label>
+              <input class="form-control" placeholder="Ingrese nombre como aparece en el DNI" name="nombre_legal" formControlName="nombre_legal" required type="text" autocomplete="off" >
+              <mat-error style="color: #EC1305;" *ngIf="form.get('nombre_legal')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Cambio Nombre Legal</label>
+              <input class="form-control" placeholder="Ingrese nombre de cambio" name="cambio_nom_legal" formControlName="cambio_nom_legal" required type="text" autocomplete="off" >
+              <mat-error style="color: #EC1305;" *ngIf="form.get('cambio_nom_legal')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Nombre que se identifica la victima</label>
+              <input class="form-control" placeholder="Ingrese nombre como se identifica la victima" name="nombre_ident_genero" formControlName="nombre_ident_genero" required type="text" autocomplete="off" >
+              <mat-error style="color: #EC1305;" *ngIf="form.get('nombre_ident_genero')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Otro Nombre</label>
+              <input class="form-control" placeholder="Ingrese otro nombre" name="otro_nombre" formControlName="otro_nombre" required type="text" autocomplete="off" >
+              <mat-error style="color: #EC1305;" *ngIf="form.get('otro_nombre')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Género</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_genero_victima" placeholder="Seleccione" >
+                <option disabled >Seleccione un género</option>
+                <option  *ngFor="let item of generos" value="{{item.idGeneroVictima}}" >{{item.tipoGeneroVictima}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_genero_victima')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Expresión Género</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_expr_genero" placeholder="Seleccione" >
+                <option disabled >Seleccione una expresión</option>
+                <option  *ngFor="let item of expresionesGeneros" value="{{item.idExpresionGenero}}" >{{item.nombreExpresion}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_expr_genero')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+            <div class="col-md-4">
+              <label for="">Orientación Sexual</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_orientacion" placeholder="Seleccione" >
+                <option disabled >Seleccione una orientación</option>
+                <option  *ngFor="let item of orientacionesSexuales" value="{{item.idOrientacion}}" >{{item.orientacion}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_orientacion')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Ocupación</label>
+              <input class="form-control" placeholder="Ingrese la ocupación" name="ocupacion" formControlName="ocupacion" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('ocupacion')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Discapacidad</label>
+              <div class="form-group" >
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="discapacidad_victima" [value]="1">
+                <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="discapacidad_victima" [value]="0" >
+                <label class="form-check-label">No</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">Condición migratoria</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_condicion_migratoria" placeholder="Seleccione" >
+                <option disabled >Seleccione una condición</option>
+                <option  *ngFor="let item of condicionesMigr" value="{{item.idCondicionMigratoria}}" >{{item.nombreCondicion}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_condicion_migratoria')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Etnia</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_etnia" placeholder="Seleccione" >
+                <option disabled >Seleccione una etnia</option>
+                <option  *ngFor="let item of etnias" value="{{item.idEtnia}}" >{{item.nombreEtnia}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_etnia')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label for="">Tiene hijos</label>
+              <div class="form-group" >
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="hijos" [value]="1" (change)="hijos($event)">
+                <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="hijos" [value]="0" (change)="hijos($event)">
+                <label class="form-check-label">No</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Cantidad hijos</label>
+              <input  class="form-control" placeholder="Ingrese la cantidad"  formControlName="cant_hijos" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('cant_hijos')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+            <div class="col-md-3">
+              <label for="">Cantidad hijos menores</label>
+              <input  class="form-control" placeholder="Ingrese la cantidad menores"  formControlName="cant_hijos_men" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('cant_hijos_men')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+             <div class="col-md-3">
+              <label for="">Cantidad hijos mayores</label>
+              <input  class="form-control" placeholder="Ingrese la cantidad mayores"  formControlName="cant_hijos_may" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('cant_hijos_may')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label for="">Cantidad personas que depende</label>
+              <input  class="form-control" placeholder="Ingrese de personas que depende la victima"  formControlName="cant_person_dependiente" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('cant_person_dependiente')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-3">
+              <label for="">Pertenecientes a organización</label>
+              <div class="form-group" >
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="perteneciente_ong" [value]="1" (change)="organiz($event)">
+                <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="perteneciente_ong" [value]="0" (change)="organiz($event)">
+                <label class="form-check-label">No</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="">Denuncia previa</label>
+              <div class="form-group" >
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="denucia_previa" [value]="1" >
+                <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="denucia_previa" [value]="0" >
+                <label class="form-check-label">No</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="">Número de caso</label>
+              <input  class="form-control" placeholder="Ingrese número de caso"  formControlName="numero_caso" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('numero_caso')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label for="">Tipo denuncia</label>
+              <input  class="form-control" placeholder="Ingrese tipo de denuncia"  formControlName="tipo_denuncia" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('tipo_denuncia')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-6">
+              <label for="">Nombre de institución donde denuncio</label>
+              <input  class="form-control" placeholder="Nombre de institución donde denuncio"  formControlName="nomb_institu_denuncio" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('nomb_institu_denuncio')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Medida de protección</label>
+              <input  class="form-control" placeholder="Nombre medidas de protección"  formControlName="medidad_proteccion" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('medidad_proteccion')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Tipo medida de protección</label>
+              <input  class="form-control" placeholder="Tipo medida de protección"  formControlName="tipo_medida_protec" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('tipo_medida_protec')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Generador</label>
+              <select class=" form-control form-select-lg mb-3" formControlName="id_generador" placeholder="Seleccione" >
+                <option disabled >Seleccione un Generador</option>
+                <option  *ngFor="let item of generadoresHechos" value="{{item.idGeneradorHecho}}" >{{item.nombLlenadorDato}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('id_generador')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+          </div>
+
+
+          <div *ngIf="form.value.cant_person_dependiente>0 || mostrarSelOrganizacion" class="separador mt-4 mb-4"></div>
+          <!-- <h2 class="mt-2">Dependientes:</h2> -->
+
+            <div class="row">
+              <div *ngIf="form.value.cant_person_dependiente>0" class="col-md-6">
+                <label for="">Tipo dependiente</label>
+                <select class=" form-control form-select-lg mb-3"  placeholder="Seleccione"  (change)="agregarDependiente($event)" >
+                  <option [disabled]="true" >Seleccione un dependiente </option>
+                  <option  *ngFor="let item of dependiente" value="{{item|json}}" >{{item.tipoDependiente}}</option>
+                </select>
+                <!-- <mat-error style="color: #EC1305;" *ngIf="form.get('idDepartamentoNac')?.hasError('required')">Campos requeridos</mat-error> -->
+                <div class="row">
+                  <table class="table" style="width: 550px;">
+                    <thead>
+                      <tr>
+                        <th>Tipo Dependiente</th>
+                        <th>Eliminar</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of dependientes">
+                        <td >{{item.tipoDependiente}}</td>
+                        <td ><a (click)="item.idDetDepVictima==undefined?quitarDependiente(item.idDependiente):eliminarDependiente(item.idDetDepVictima)"><mat-icon style="color: red;" fontIcon="delete"></mat-icon></a></td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div  *ngIf="mostrarSelOrganizacion" class="col-md-6">
+                <label for="">Organización</label>
+                <select class=" form-control form-select-lg mb-3"  placeholder="Seleccione" (change)="agregarOrganizacion($event)"  >
+                  <option [disabled]="true" >Seleccione una organización </option>
+                  <option  *ngFor="let item of organizacion" value="{{item |json}}" >{{item.nombreOrganizacion}}</option>
+                </select>
+                <!-- <mat-error style="color: #EC1305;" *ngIf="form.get('idDepartamentoDom')?.hasError('required')">Campos requeridos</mat-error> -->
+                <div class="row">
+                  <table class="table" style="width: 550px;">
+                    <thead>
+                      <tr>
+                        <th>Organización</th>
+                        <th>Eliminar</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of organizaciones">
+                        <td >{{item.nombreOrganizacion}}</td>
+                        <td ><a (click)="item.idDetOrganVictima==undefined?quitarOrganizacion(item.idOrganizacion):eliminarOrganizacion(item.idDetOrganVictima)"><mat-icon style="color: red;" fontIcon="delete"></mat-icon></a></td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row justify-content-center" style="margin-top: 15px;">
+            <div class="col-md-6 text-center">
+              <button  class="btn btn-danger mr-4" (click)="volver()" routerLinkActive="router-link-active"  >Volver</button>
+              <button [disabled]="form.invalid" class="btn btn-success" (click)="addEdit()">Guardar</button>
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
+
+
+

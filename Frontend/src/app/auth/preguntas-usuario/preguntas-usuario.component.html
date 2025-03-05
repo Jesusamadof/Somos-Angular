@@ -1,0 +1,72 @@
+
+<div class="section card ">
+  <div class=" section2 mt-4">
+      <h1 style="color:white; margin-top: -55px; font-family: 'Times New Roman', Times, serif;" class="text-center">
+          Sistema de Somos CDC</h1>
+  </div>
+</div>
+
+
+<div class="text-center ">
+  <h2 style="font-family: 'Times New Roman', Times, serif;"> <strong>Bienvenido: </strong> {{nombre}}</h2>
+</div>
+
+<div class="text-center">
+  <h2>Seleccione 3 preguntas..</h2>
+  <p>Recuerde que las respuesta que guarde podra restablecer su contraseña, sea minucioso!</p>
+</div>
+<div  class="text-center mx-auto" style="width: 50%;" >
+  <form     [formGroup]="form" >
+    <div  class="text-center row">
+      <div class="col-md-6 text-center" style="width: 50px;">
+          <label>Preguntas</label>
+          <select   class="form-control" required formControlName="idPregunta">
+            <option disabled="true">Seleccione un opción</option>
+            <option  *ngFor="let item of preguntas; " [value]="item.idPregunta">{{item.pregunta}}  </option>
+          </select>
+
+      </div>
+      <div class="col-md-6 text-center" style="width: 50px;">
+          <label>Respuesta</label>
+        <input class="form-control" formControlName="respuesta"  type="text" (input)="convertirAMayusculas($event)">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button [disabled]="form.invalid" class="btn btn-primary" (click)="agregarRepuesta()">Guardar Respuesta</button>
+    </div>
+
+
+  </form>
+
+  <div *ngIf="preguntasLista.length>2" class="mt-4">
+    <h3  style="color: orange;">Presione terminar para guardar sus respuestas!!</h3>
+    <button [disabled]="preguntasLista.length<3" class="btn btn-success" (click)="guardar()">Terminar!!</button>
+  </div>
+
+
+
+
+</div>
+
+<!-- <div class="row">
+  <table class="table" style="width: 550px;">
+    <thead>
+      <tr>
+        <th>Organización</th>
+        <th>Eliminar</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of preguntasLista">
+        <td >{{item.idPregunta}}</td>
+        <td ><a (click)="quitarPregunta(item.idPregunta)"><mat-icon style="color: red;" fontIcon="delete"></mat-icon></a></td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div> -->
+
+

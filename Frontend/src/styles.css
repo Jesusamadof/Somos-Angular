@@ -1,0 +1,201 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.section {
+  background-color: #933996;
+  height: 120px;
+}
+
+.section2 {
+  background-color: black;
+  height: 70px;
+
+
+}
+
+.login {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 100px;
+
+}
+
+.h1,#h1 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.busqueda {
+
+  display: flex;
+}
+
+.ml-auto {
+  display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); */
+}
+
+.icon-edit {
+  color: #0CC2DF;
+}
+
+.icon-elim {
+  color: #D81A74;
+}
+
+.icon-ver {
+  color: #668A4C;
+}
+
+.icon-disabled {
+  color: #CECBCB;
+}
+
+.icon-del{
+  color: #FF0000;
+}
+
+
+
+#btn-agregar {
+  display: flex;
+  width: 170px;
+  justify-content: center;
+}
+
+#btnn {
+  margin-left: auto;
+}
+
+.mat-icon {
+  font-size: 25px;
+}
+
+/* Agregar Usuario, Seleccion de modulo */
+.encabezado {
+  background-color: #494e53;
+  color: #dedfe0;
+  overflow-x: auto;
+  font-size: 20px;
+}
+
+.filaGenerada {
+  background-color: #dedfe0;
+}
+
+.scroll {
+  max-height: 200px;
+  /* Establece la altura máxima */
+  overflow: scroll;
+  /* Agrega la barra de desplazamiento automáticamente cuando sea necesario */
+  /* border: 1px solid #ccc;
+  padding: 10px; */
+}
+
+.scroll2 {
+  max-height: 200px;
+  /* Establece la altura máxima */
+  overflow: scroll;
+  display: flexbox;
+  /* Agrega la barra de desplazamiento automáticamente cuando sea necesario */
+  /* border: 1px solid #ccc;
+  padding: 10px; */
+}
+
+.mat-hint {
+  color: #CD252A;
+}
+
+.btn-con-icon {
+  display: flex;
+  width: 170px;
+  justify-content: center;
+}
+
+.next,
+.previous {
+  background-color: #11c4e0;
+}
+
+.ofx{
+  overflow-x: auto;
+}
+
+.body{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.lwhite{
+  color: white;
+}
+.bwhite{
+  background-color: white;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.mayusculas {
+  text-transform: uppercase;
+}
+
+
+
+/* Default styles for all screen sizes */
+
+/* Media query for small screens */
+@media (max-width: 10px) {
+  /* Styles for small screens go here */
+}
+
+/* Media query for medium screens */
+@media (min-width: 100px) and (max-width: 60px) {
+  /* Styles for medium screens go here */
+}
+
+/* Media query for large screens */
+@media (min-width: 100px) {
+  /* Styles for large screens go here */
+}
+
+
+.zIndex{
+  z-index: 1038;
+}
+
+/* tu-componente.component.css */
+
+
+
+/* Style when the modal is opened */
+.zIndex.modal-opened {
+  z-index: 999;
+  /* Set a different z-index when the modal is opened */
+}
+
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  /* Otros estilos de deshabilitado según tus preferencias */
+}
+
+/** No CSS for this example */
+.disable1:hover {
+  cursor: not-allowed;
+}
+
+.disable1:active {
+  pointer-events: none;
+}
+
+.corner-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.separador {
+  border: 3px solid #933996;
+}

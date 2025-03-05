@@ -1,0 +1,161 @@
+<mat-card>
+  <h1 class="h1 text-center">{{operacion}} Persona</h1>
+</mat-card>
+
+    <div class="card" style="overflow-x:auto; margin:8px; height: 630px; ">
+    <div class="section-container" style=" align-items: center; margin: 20px;">
+        <form class="mt-3" [formGroup]="form">
+          <div class="separador"></div>
+          <h2>Datos Generales: </h2>
+          <div class="row">
+          <div class="col-md-6">
+            <label for="">DNI</label>
+            <input class="form-control" placeholder="Ingrese DNI" name="dni" formControlName="dni" required type="text" autocomplete="off">
+            <mat-error style="color: #EC1305;" *ngIf="form.get('dni')?.hasError('required')">Campos requeridos</mat-error>
+            <!-- <mat-error style="color: #EC1305;" *ngIf="form.get('dni')?.hasError('pattern')">Formato Incorrecto</mat-error> -->
+          </div>
+          <div class="col-md-6">
+            <label for="">Nombre Legal</label>
+            <input class="form-control" placeholder="Ingrese nombre como aparece en el DNI" name="nombreLegal" formControlName="nombreLegal" required type="text" autocomplete="off" >
+            <mat-error style="color: #EC1305;" *ngIf="form.get('nombreLegal')?.hasError('required')">Campos requeridos</mat-error>
+          </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="">Fecha Nacimiento</label>
+              <input class="form-control" placeholder="Ingrese la fecha nacimiento" name="fechaNacimiento" formControlName="fechaNacimiento" required type="date" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('fechaNacimiento')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Estado Civil</label>
+              <select id="select" class=" form-control form-select-lg mb-3" formControlName="estadoCivil" placeholder="Seleccione" >
+                <option disabled >Seleccione un estado</option>
+                <option  *ngFor="let item of estadoCivil" value="{{item.estado}}" >{{item.estado}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('estadoCivil')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+            <div class="col-md-4">
+              <label for="">Nivel Educativo</label>
+              <select id="select" class=" form-control form-select-lg mb-3" formControlName="idNivelEduc" placeholder="Seleccione" >
+                <option disabled >Seleccione un Nivel</option>
+                <option  *ngFor="let item of nivelesEducativos" value="{{item.idNivelEduc}}" >{{item.nombreNivel}}</option>
+              </select>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('idNivelEduc')?.hasError('required')">Campos requeridos</mat-error>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Nacionalidad</label>
+              <input class="form-control" placeholder="Ingrese la Nacionalidad" name="nacionalidad" formControlName="nacionalidad" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('nacionalidad')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+
+            <div class="col-md-4">
+              <label for="">Teléfono/celular</label>
+              <input class="form-control" placeholder="Ingrese Teléfono/celular" name="telefono" formControlName="telefono" required type="text" autocomplete="off">
+              <mat-error style="color: #EC1305;" *ngIf="form.get('telefono')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+            <div class="col-md-4">
+              <label for="">Agravantes</label>
+              <textarea class="form-control" placeholder="Ingrese los agravantes" name="agravante" required formControlName="agravante"  rows="2"></textarea>
+              <mat-error style="color: #EC1305;" *ngIf="form.get('agravante')?.hasError('required')">Campos requeridos</mat-error>
+            </div>
+          </div>
+
+
+          <div class="separador mt-4"></div>
+          <h2 class="mt-2">Lugar de Nacimiento:</h2>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">Departamentos</label>
+                <select id="select" class=" form-control form-select-lg mb-3" formControlName="idDepartamentoNac" placeholder="Seleccione" (change)="getMunicipios($event,1)" >
+                  <option disabled >Seleccione un Departamento </option>
+                  <option  *ngFor="let item of departamentos" value="{{item.idDepartamento}}" >{{item.nombreDepartamento}}</option>
+                </select>
+                <mat-error style="color: #EC1305;" *ngIf="form.get('idDepartamentoNac')?.hasError('required')">Campos requeridos</mat-error>
+
+              </div>
+
+              <div class="col-md-6">
+                <label for="">Municipios</label>
+                <select id="select" class=" form-control form-select-lg mb-3" formControlName="idMunicipioNac" placeholder="Seleccione" >
+                  <option disabled >Seleccione un Municipio </option>
+                  <option  *ngFor="let item of municipiosNac" value="{{item.idMunicipio}}" >{{item.nombreMunicipio}}</option>
+                </select>
+                <mat-error style="color: #EC1305;" *ngIf="form.get('idMunicipioNac')?.hasError('required')">Campos requeridos</mat-error>
+              </div>
+             </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="">Ciudad</label>
+                  <textarea class="form-control" placeholder="Ingrese Ciudad" name="ciudadNac" required formControlName="ciudadNac"  rows="2"></textarea>
+                  <mat-error style="color: #EC1305;" *ngIf="form.get('ciudadNac')?.hasError('required')">Campos requeridos</mat-error>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="">Aldea</label>
+                  <textarea class="form-control" placeholder="Ingrese Aldea" name="aldeaNac" required formControlName="aldeaNac"  rows="2"></textarea>
+                  <mat-error style="color: #EC1305;" *ngIf="form.get('aldeaNac')?.hasError('required')">Campos requeridos</mat-error>
+                </div>
+              </div>
+
+
+
+            <div class="separador mt-4"></div>
+          <h2 class="mt-2">Lugar de Domicilio:</h2>
+
+            <div class="row">
+              <div class="col-md-6">
+                <label for="">Departamentos</label>
+                <select id="select" class=" form-control form-select-lg mb-3" formControlName="idDepartamentoDom" placeholder="Seleccione" (change)="getMunicipios($event,2)" >
+                  <option disabled >Seleccione un Departamento </option>
+                  <option  *ngFor="let item of departamentos" value="{{item.idDepartamento}}" >{{item.nombreDepartamento}}</option>
+                </select>
+                <mat-error style="color: #EC1305;" *ngIf="form.get('idDepartamentoDom')?.hasError('required')">Campos requeridos</mat-error>
+
+              </div>
+
+              <div class="col-md-6">
+                <label for="">Municipios</label>
+                <select id="select" class=" form-control form-select-lg mb-3" formControlName="idMunicipioDom" placeholder="Seleccione" >
+                  <option disabled >Seleccione un Municipio </option>
+                  <option  *ngFor="let item of municipiosDom" value="{{item.idMunicipio}}" >{{item.nombreMunicipio}}</option>
+                </select>
+                <mat-error style="color: #EC1305;" *ngIf="form.get('idMunicipioDom')?.hasError('required')">Campos requeridos</mat-error>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                  <label for="">Ciudad</label>
+                  <textarea class="form-control" placeholder="Ingrese Ciudad"  required formControlName="ciudadDom"  rows="2"></textarea>
+                  <mat-error style="color: #EC1305;" *ngIf="form.get('ciudadDom')?.hasError('required')">Campos requeridos</mat-error>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="">Aldea</label>
+                  <textarea class="form-control" placeholder="Ingrese Aldea"  required formControlName="aldeaDom"  rows="2"></textarea>
+                  <mat-error style="color: #EC1305;" *ngIf="form.get('aldeaDom')?.hasError('required')">Campos requeridos</mat-error>
+                </div>
+              </div>
+
+
+
+
+          <div class="row justify-content-center" style="margin-top: 15px;">
+            <div class="col-md-6 text-center">
+              <button  class="btn btn-danger mr-4" (click)="volver()" routerLinkActive="router-link-active"  >Volver</button>
+              <button [disabled]="form.invalid" class="btn btn-success" (click)="addEdit()">Guardar</button>
+            </div>
+          </div>
+
+
+
+        </form>
+      </div>
+
+
+
